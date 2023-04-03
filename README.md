@@ -88,7 +88,7 @@ The openSUSE package is called [rfc-read](https://build.opensuse.org/package/sho
 You can choose which directory `rfc` uses by setting the `RFC_DIR` environment
 variable. The directory is automatically created if it doesn’t exist.
 
-The default directory is `~/.RFCs`.
+The default directory is `$XDG_CACHE_HOME/RFCs` it uses `~/.RFCs` if present to maintain the previous versions cached files.
 
 ## Troubleshooting
 
