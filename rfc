@@ -14,7 +14,16 @@ __rfc() {
     local VERSION='0.2.5'
     local PAGER=${PAGER:-less}
     local fetch_cmd=${CURL:-curl}
-    local rfc_dir="${RFC_DIR:-$HOME/.RFCs}"
+    local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}"
+    local previous_rfc_dir="$HOME/.RFCs"
+    local xdg_cache_rfc_dir="$cache_dir/RFCs"
+    if [ -d "$previous_rfc_dir" ]
+    then
+	    local rfc_default_dir="$previous_rfc_dir"
+    else
+	    local rfc_default_dir="$xdg_cache_rfc_dir"
+    fi
+    local rfc_dir="${RFC_DIR:-$rfc_default_dir}"
     local code=
 
     # Error codes
